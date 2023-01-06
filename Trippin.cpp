@@ -1,156 +1,193 @@
 #include <iostream>
-#include <string.h>
+#include <string>
+
 
 using namespace std;
 
+// prototype function
+void tulisWisata(int a);
 
-char user[50], kategori[50], lokasi[50];
+// declaration
+string user, kategoriFilter, lokasiFilter;
 int numKategori, numLokasi;
 
-string namaWisata[] = {"Pantai Widodaren", "Tebing Breksi", "Bukit Teletubies"};
-string kategoriWisata[] = {"Pantai", "Bukit", "Bukit"};
-string lokasiWisata[] = {"Gunung Kidul", "Sleman", "Bantul"};
+struct wisata {
+    string nama;
+    string kategori;
+    string lokasi;
+    string tiket;
+    string jamOperasi;
+};
+
+wisata wisataJogja[] = {
+    {"Pantai Widodaren", "Pantai", "Gunung Kidul"},
+    {"Bukit Pengilon", "Bukit", "Bantul"},
+    {"Tebing Breksi", "Tebing", "Sleman"},
+    {"Hutan Pinus", "Hutan", "Bantul"},
+    {"Bukit Bintang", "Bukit", "Bantul"}
+};
+
+int lengthWisataJogja = sizeof(wisataJogja)/sizeof(*wisataJogja);
+
+
+// program
 
 int main()
 {
-    system("CLS");
+    system("cls");
 
-    cout << endl;
-    cout << "========================= Trippin ==========================" << endl;
-    cout << "============== Pencarian wisata alam di Jogja ==============" << endl;
+    //     cout << endl;
+    // cout << "========================= Trippin ==========================" << endl;
+    // cout << "============== Pencarian wisata alam di Jogja ==============" << endl;
+    // cout << endl;
+    // cout << endl;
 
-    cout << endl;
-    cout << endl;
 
-    cout << "Masukkan Nama Anda : "; 
-    cin >> user;
+    // cout << "Masukkan Nama Anda : "; 
+    // cin >> user;
+    // cout << endl;
+    // cout << endl;
 
-    cout << endl;
-    cout << endl;
 
-    cout << "Hallo, " << user << endl;
-    
-    cout << endl; 
+    // cout << "Hallo, " << user << endl;
+    // cout << endl;
+
+
+    // memilih kategori
 
     kategori:
-    cout << "Pilihan kategori : " << endl;
-    cout << " " << endl;
-    cout << " [1] Pantai             " << endl;
-    cout << " [2] Gunung             " << endl;
-    cout << " [3] Bukit              " << endl;
-    cout << " [0] Tampilkan Semua    " << endl;
-    cout << " " << endl;
 
-    cout << "Masukkan angka sesuai kategori yang diinginkan : ";
-    cin >> numKategori;
+    string kategori[] = {"Pantai", "Bukit", "Hutan", "Curug", "Air Terjun", "Goa"};
+    int lengthKategori = sizeof(kategori)/sizeof(*kategori);
 
+    cout << "Berikut kategori wisata alam : " << endl;
     cout << endl;
+
+
+    for (int i = 0; i < lengthKategori; i++)   
+    {
+        cout << " [" << i+1 << "] " << kategori[i] << endl;
+    }
+    cout << endl;
+
+
+    cout << "Ketik angka sesuai kategori yang diinginkan : ";
+    cin >> numKategori;
+    cout << endl;
+
+    cout << "----------" << endl;
+    cout << endl;
+
+
 
     switch (numKategori)
     {
     case 1:
-        strcpy(kategori, "Pantai");
+        kategoriFilter = kategori[0];
         break;
     case 2:
-        strcpy(kategori, "Gunung");
+        kategoriFilter = kategori[1];
         break;
     case 3:
-        strcpy(kategori, "Bukit");
+        kategoriFilter = kategori[2];
         break;
-    case 0:
-        strcpy(kategori, "Pantai, Gunung, dan Bukit");
+    case 4:
+        kategoriFilter = kategori[3];
+        break;
+    case 5:
+        kategoriFilter = kategori[4];
+        break;
+    case 6:
+        kategoriFilter = kategori[5];
         break;
     default:
-        cout << "Pilihan kategori yang anda pilih tidak tersedia..." << endl;
+        cout << "Kategori yang Anda pilih belum tersedia..." << endl;
         cout << endl;
         goto kategori;
     }
 
-    cout << endl;
+
+    // memilih lokasi
 
     lokasi:
-    cout << "Pilihan Lokasi : " << endl;
-    cout << " " << endl;
-    cout << " [1] Kaliurang           " << endl;
-    cout << " [2] Gunung Kidul        " << endl;
-    cout << " [3] Bantul              " << endl;
-    cout << " [0] Tampilkan Semua     " << endl;
-    cout << " " << endl;
 
-    cout << "Masukkan angka sesuai lokasi yang dipilih : ";
-    cin >> numLokasi;
-
+    string lokasi[] = {"Gunung Kidul", "Sleman", "Bantul", "Kaliurang"};
+    int lengthLokasi = sizeof(lokasi) / sizeof(*lokasi);
+    
+    cout << "Berikut lokasi wisata alam : " << endl;
     cout << endl;
+
+    for (int i = 0; i < lengthLokasi; i++)
+    {
+        cout << " [" << i+1 << "] " << lokasi[i] << endl;
+    }
+    cout << endl;
+
+
+    cout << "Ketik angka sesuai lokasi yang diinginkan : ";
+    cin >> numLokasi;
+    cout << endl;
+
+    cout << "----------" << endl;
+    cout << endl;
+
 
     switch (numLokasi)
     {
     case 1:
-        strcpy(lokasi, "Kaliurang");
+        lokasiFilter = lokasi[0];
         break;
     case 2:
-        strcpy(lokasi, "Gunung Kidul");
+        lokasiFilter = lokasi[1];
         break;
     case 3:
-        strcpy(lokasi, "Bantul");
+        lokasiFilter = lokasi[2];
         break;
-    case 0:
-        strcpy(lokasi, "Kaliurang, Gunung Kidul, dan Bantul");
+    case 4:
+        lokasiFilter = lokasi[3];
         break;
     default:
-        cout << "Pilihan lokasi yang anda pilih belum tersedia..." << endl;
+        cout << "Lokasi yang anda pilih belum tersedia..." << endl;
         cout << endl;
         goto lokasi;
     }
 
-    cout << endl;
-    cout << "-----" << endl;
-    cout << "Anda memilih kategori " << kategori << " yang berlokasi di " << lokasi << endl;
-    cout << "-----" << endl;
 
+    // menampilkan hasil
 
-    /*Menampilkan wisata*/
-
-    cout << endl;
-    cout << endl;
-    cout << "Berikut adalah hasil pencarian : " << endl;
+    cout << "Anda memilih kategori " << kategoriFilter << " yang berlokasi di " << lokasiFilter << endl;
     cout << endl;
 
-    int lengthWisata = sizeof(namaWisata)/sizeof(*namaWisata);
+    cout << "----------" << endl;
+    cout << endl;
 
-    for (int b = 0; b <= lengthWisata; b++)
+    cout << "Berikut adalah hasil pencarian : ";
+    cout << endl;
+
+    for (int i = 0; i < lengthWisataJogja; i++)
     {
-        cout << b << endl;
-        if (kategori == kategoriWisata[b] && lokasi == lokasiWisata[b]){
-            cout << "satu" << endl;
-            cout << "Nama      : " << namaWisata[b] << endl;
-            cout << "Kategori  : " << kategoriWisata[b] << endl;
-            cout << "Lokasi    : " << lokasiWisata[b] << endl;
-            cout << endl;
-        } else if (lokasi == lokasiWisata[b]){
-            cout << "dua" << endl;
-            cout << "Nama      : " << namaWisata[b] << endl;
-            cout << "Kategori  : " << kategoriWisata[b] << endl;
-            cout << "Lokasi    : " << lokasiWisata[b] << endl;
-            cout << endl;
-        } else if (kategori == kategoriWisata[b]){
-            cout << "tiga" << endl;
-            cout << "Nama      : " << namaWisata[b] << endl;
-            cout << "Kategori  : " << kategoriWisata[b] << endl;
-            cout << "Lokasi    : " << lokasiWisata[b] << endl;
-            cout << endl;
-        } else {
-            cout << "empat" << endl;
-            cout << "Nama      : " << namaWisata[b] << endl;
-            cout << "Kategori  : " << kategoriWisata[b] << endl;
-            cout << "Lokasi    : " << lokasiWisata[b] << endl;
-            cout << endl;
-        }        
+        if (kategoriFilter == kategori[i] && lokasiFilter == lokasi[i])
+        {
+            tulisWisata(i);
+        }
+        
     }
 
-    
+
 
     cout << endl;
     cout << endl;
-    cin.get();
     return 0;
+}
+
+
+
+// function
+
+void tulisWisata (int a) {
+    cout << "Nama       : " << wisataJogja[a].nama << endl;
+    cout << "kategori   : " << wisataJogja[a].kategori << endl;
+    cout << "lokasi     : " << wisataJogja[a].lokasi << endl;
+
+    cout << endl;
 }
