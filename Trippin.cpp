@@ -36,24 +36,6 @@ int main()
 {
     system("cls");
 
-    //     cout << endl;
-    // cout << "========================= Trippin ==========================" << endl;
-    // cout << "============== Pencarian wisata alam di Jogja ==============" << endl;
-    // cout << endl;
-    // cout << endl;
-
-
-    // cout << "Masukkan Nama Anda : "; 
-    // cin >> user;
-    // cout << endl;
-    // cout << endl;
-
-
-    // cout << "Hallo, " << user << endl;
-    // cout << endl;
-
-
-    // memilih kategori
 
     kategori:
 
